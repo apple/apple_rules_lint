@@ -1,0 +1,12 @@
+load("//lint_rule:amazing_linter.bzl", "example_linter_config")
+
+# This is configured as the default lint config for `lintable_rule`
+# targets. We configure it to always fail the build to demonstrate
+# what could be done.
+example_linter_config(
+    name = "default_config",
+    always_pass = False,
+    visibility = [
+        "//visibility:public",
+    ]
+)

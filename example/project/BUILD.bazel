@@ -1,0 +1,7 @@
+load("//lint_rule:amazing_linter.bzl", "lintable_rule")
+
+# Because we've not overridden the lint config, we get the default config,
+# which will cause the lint tests to fail.
+lintable_rule(
+    name = "will_fail",
+)

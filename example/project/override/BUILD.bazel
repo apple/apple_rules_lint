@@ -1,0 +1,19 @@
+load("@apple_rules_lint//lint:defs.bzl", "package_lint_config")
+load("//lint_rule:amazing_linter.bzl", "example_linter_config", "lintable_rule")
+
+# Override the default linter for "lint_example" only
+package_lint_config({
+    "lint_example": ":override_config"
+})
+
+# This config will cause the lint tests to always pass
+example_linter_config(
+    name = "override_config",
+    always_pass = True,
+)
+
+# And because the linting config has been overridden for this package
+# alone, this lint test will pass.
+lintable_rule(
+    name = "will_pass",
+)
