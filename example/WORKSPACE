@@ -11,10 +11,6 @@ lint_deps()
 
 load("@apple_rules_lint//lint:setup.bzl", "lint_setup")
 
-lint_setup()
-
-load("@apple_rules_lint//lint:workspace.bzl", "register_linters")
-
-register_linters({
+lint_setup({
 #    "lint_example": "//:default_config",
 })

@@ -13,7 +13,7 @@ The build will pass. It should do! It does almost nothing! Now run:
 No tests are run. Boo! That's no fun! But all's not lost! Open up the `WORKSPACE` and change:
 
 ```py
-register_linters({
+lint_setup({
 #    "lint_example": "//:default_config",
 })
 ```
@@ -21,7 +21,7 @@ register_linters({
 to:
 
 ```py
-register_linters({
+lint_setup({
     "lint_example": "//:default_config",
 })
 ```
