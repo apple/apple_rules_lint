@@ -11,7 +11,7 @@ def _register_linters_impl(repository_ctx):
       if value.startswith("//"):
         linters.update({name.lower(): "@%s" % value})
       elif value.startswith(":"):
-        linters.update({name.lower(): "@//%s" % value})
+        linters.update({name.lower(): "@//%s%s" % (native.package_name, value)})
       else:
         linters.update({name.lower(): value})
 
