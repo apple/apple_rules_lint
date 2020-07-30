@@ -57,8 +57,10 @@ To obtain the currently configured config for a ruleset, use:
 
 load("@apple_rules_lint//lint:defs.bzl", "get_lint_config")
 
-config = get_lint_config("java-checkstyle")
+config = get_lint_config("java-checkstyle", tags)
 if config != None:
     # set up lint targets
     pass
 ```
+
+Where `tags` are the tags of the rule to check.

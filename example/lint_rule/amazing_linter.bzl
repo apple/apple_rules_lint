@@ -68,10 +68,10 @@ _lintable_rule = rule(
     },
 )
 
-def lintable_rule(name, visibility = None):
+def lintable_rule(name, tags = [], visibility = None):
     _lintable_rule(name = name, visibility = visibility)
 
-    config = get_lint_config("lint_example")
+    config = get_lint_config("lint_example", tags)
     if config != None:
         lintable_test(
             name = "%s-test" % name,
