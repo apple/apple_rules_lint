@@ -36,12 +36,16 @@ package_lint_config({
 
 ## Ruleset Authors
 
+To add linter support to your repo, add this to...
+
 ```py
 # repositories.bzl
 load("@apple_rules_lint//lint:repositories.bzl", "lint_deps")
 
 lint_deps()
 ```
+
+Then add this to...
 
 ```py
 # setup.bzl
