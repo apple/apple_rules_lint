@@ -6,14 +6,12 @@ ExampleConfigInfo = provider(
     },
 )
 
-
 def _example_linter_config_impl(ctx):
     return [
         ExampleConfigInfo(
             always_pass = ctx.attr.always_pass,
         ),
     ]
-
 
 example_linter_config = rule(
     _example_linter_config_impl,
@@ -22,9 +20,8 @@ example_linter_config = rule(
     },
     provides = [
         ExampleConfigInfo,
-    ]
+    ],
 )
-
 
 def _lintable_test_impl(ctx):
     config = ctx.attr.config[ExampleConfigInfo]
@@ -52,7 +49,7 @@ lintable_test = rule(
         ),
         "config": attr.label(
             providers = [
-              [ExampleConfigInfo],
+                [ExampleConfigInfo],
             ],
         ),
     },
@@ -78,4 +75,3 @@ def lintable_rule(name, tags = [], visibility = None):
             target = name,
             config = config,
         )
-

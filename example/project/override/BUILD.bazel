@@ -3,7 +3,7 @@ load("//lint_rule:amazing_linter.bzl", "example_linter_config", "lintable_rule")
 
 # Override the default linter for "lint_example" only
 package_lint_config({
-    "lint_example": ":override_config"
+    "lint_example": ":override_config",
 })
 
 # This config will cause the lint tests to always pass

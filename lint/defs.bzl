@@ -7,7 +7,6 @@ load(
 
 package_lint_config = _package_lint_config
 
-
 def get_lint_config(linter_name, tags):
     if not linter_name.islower():
         fail("Linter names are expected to be in lowercase: %s" % linter_name)
