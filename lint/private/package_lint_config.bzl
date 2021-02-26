@@ -1,7 +1,6 @@
-
 def _empty_rule_impl(ctx):
     return [
-        DefaultInfo()
+        DefaultInfo(),
     ]
 
 _empty_rule = rule(

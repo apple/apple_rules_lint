@@ -8,5 +8,5 @@ example_linter_config(
     always_pass = False,
     visibility = [
         "//visibility:public",
-    ]
+    ],
 )

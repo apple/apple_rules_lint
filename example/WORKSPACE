@@ -1,8 +1,8 @@
 workspace(name = "lint_example")
 
 local_repository(
-  name = "apple_rules_lint",
-  path = "..",
+    name = "apple_rules_lint",
+    path = "..",
 )
 
 load("@apple_rules_lint//lint:repositories.bzl", "lint_deps")
@@ -12,5 +12,5 @@ lint_deps()
 load("@apple_rules_lint//lint:setup.bzl", "lint_setup")
 
 lint_setup({
-#    "lint_example": "//:default_config",
+    #    "lint_example": "//:default_config",
 })

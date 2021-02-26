@@ -1,2 +1,2 @@
 def lint_deps():
-  pass
+    pass
