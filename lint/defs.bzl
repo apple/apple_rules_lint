@@ -8,6 +8,17 @@ load(
 package_lint_config = _package_lint_config
 
 def get_lint_config(linter_name, tags):
+    """Gets the lint config for a particular linter from the tags of a rule.
+
+    This will return either `None` or the label configured in `lint_setup`.
+    If the tags `no-lint` or `no-linter_name` (eg. `no-java-checkstyle`) are
+    found, then `None` will be returned. This allows linting to be turned off
+    for specific rules.
+
+    Args:
+      linter_name: The "well known" name of the linter (eg. `java-checkstyle`)
+      tags: The tags from the rule (eg. `ctx.attr.tags`)
+    """
     if not linter_name.islower():
         fail("Linter names are expected to be in lowercase: %s" % linter_name)
 
