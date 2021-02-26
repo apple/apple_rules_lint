@@ -22,6 +22,8 @@ load("@apple_rules_lint//lint/private:package_lint_config.bzl", "package_lint_co
 package(default_visibility = ["//visibility:public"])
 
 package_lint_config(%s)
+
+exports_files(["defs.bzl"])
 """ % repr(linters),
     )
 
@@ -46,6 +48,15 @@ def _do_register_linters(name_to_linter_config):
     )
 
 def lint_setup(name_to_linter_config = {}):
+    """Register the given linters.
+
+    This rule is designed to be run by users from the `WORKSPACE`. Ruleset
+    authors are expected to use `ruleset_lint_config`.
+
+    Args:
+         linters: a dict of "well known name" to Label.
+    """
+
     if native.existing_rule("apple_linters"):
         fail(
             "Linting has already been configured. Please ensure that the call " +
@@ -59,4 +70,11 @@ def lint_setup(name_to_linter_config = {}):
     _do_register_linters(name_to_linter_config)
 
 def ruleset_lint_setup():
+    """Register the given linters.
+
+    This rule is designed to be run by authors of rulesets so that they
+    can ensure that they can call `get_lint_config` safely. Users should
+    use `lint_setup` instead.
+    """
+
     _do_register_linters({})

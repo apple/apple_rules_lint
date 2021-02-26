@@ -34,6 +34,10 @@ package_lint_config({
 })
 ```
 
+### API Documentation
+
+Can be found in [the api docs](api.md)
+
 ## Ruleset Authors
 
 To add linter support to your repo, add this to...

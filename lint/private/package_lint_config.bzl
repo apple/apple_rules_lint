@@ -12,6 +12,16 @@ _empty_rule = rule(
 OVERRIDE_RULE_NAME = "package_lint_config"
 
 def package_lint_config(linters):
+    """Register the given linters for the current bazel package.
+
+    This is expected to be near the top of the `BUILD.bazel` file and
+    allows users to override or configure specific linters for a bazel
+    package.
+
+    Args:
+      linters: a dict of "well known name" to Label.
+    """
+
     if native.existing_rule(":%s" % OVERRIDE_RULE_NAME):
         fail("Lint configurations may only be overridden once per package")
 
