@@ -72,3 +72,43 @@ if config != None:
 ```
 
 Where `tags` are the tags of the rule to check.
+
+
+# Integrating `apple_rules_lint` With Your Rulesets
+
+For the sake of this example, we'll show how `apple_rules_lint` is
+integrated with the Selenium project, but the same process can be
+followed for any linter:
+
+1. Wrap the linter with a `_test` rule, so you can run them with bazel
+   test. In Selenium, this is the
+   [spotbugs_test](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/spotbugs.bzl)
+
+2. Create a config rule or a marker rule of some sort. For example,
+   [spotbugs_config](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/spotbugs_config.bzl)
+
+3. Pick a "well known" name: `lang-tool` seems to work well (such as
+   `java-spotbugs`, but you might have `go-gofmt` or `py-black`)
+
+4. Create a macro that uses
+   [get_lint_config](./api.md#get_lint_config) to look up the config
+   for you. If that's present, create a new instance of your test
+   rule. You can see this in action
+   [here](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/library.bzl).
+
+5. As you write code, make sure your macro is called. If you're a
+   ruleset author, this can be as lightweight as exporting the macro created
+   above as the default way to call your rules.
+
+6. ...
+
+7. Profit!
+
+Users can then use the "well known" name to point to an instance of
+the config rule in their `WORKSPACE` files:
+
+```starlark
+lint_setup({
+    "java-spotbugs": "//java:spotbugs-config",
+})
+```
