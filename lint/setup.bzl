@@ -1,3 +1,5 @@
+_COMMON_NAME = "apple_linters"
+
 def _register_linters_impl(repository_ctx):
     linter_names = [name.lower() for name in repository_ctx.attr.linters.keys()]
     repository_ctx.file("defs.bzl", "configured_linters = %s" % linter_names)
@@ -43,7 +45,7 @@ def _do_register_linters(name_to_linter_config):
             fail("Linter names are expected to be in lowercase: %s" % name)
 
     _register_linters(
-        name = "apple_linters",
+        name = _COMMON_NAME,
         linters = name_to_linter_config,
     )
 
@@ -57,7 +59,7 @@ def lint_setup(name_to_linter_config = {}):
          linters: a dict of "well known name" to Label.
     """
 
-    if native.existing_rule("apple_linters"):
+    if native.existing_rule(_COMMON_NAME):
         fail(
             "Linting has already been configured. Please ensure that the call " +
             "to `register_linters` is included as early as possible in your " +
@@ -77,5 +79,5 @@ def ruleset_lint_setup():
     use `lint_setup` instead.
     """
 
-    if not native.existing_rule("apple_linters"):
+    if not native.existing_rule(_COMMON_NAME):
         _do_register_linters({})
