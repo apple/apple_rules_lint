@@ -77,4 +77,5 @@ def ruleset_lint_setup():
     use `lint_setup` instead.
     """
 
-    _do_register_linters({})
+    if not native.existing_rule("apple_linters"):
+        _do_register_linters({})
