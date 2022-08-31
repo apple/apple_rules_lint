@@ -1,0 +1,2 @@
+build --experimental_enable_bzlmod
+build --incompatible_unambiguous_label_stringification

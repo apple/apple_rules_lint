@@ -1,0 +1,7 @@
+module(
+    name = "apple_rules_lint",
+    version = "0.1.1",
+)
+
+linter = use_extension("//lint:extensions.bzl", "linter")
+use_repo(linter, "apple_linters")
