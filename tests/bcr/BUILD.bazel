@@ -1,0 +1,6 @@
+exports_files(["foo_config.json"])
+
+alias(
+    name = "foo-check-config",
+    actual = "@other_module//:foo-check-config",
+)

@@ -5,8 +5,8 @@ A linting framework for Bazel
 
 You must load and configure the linting framework before anything else.
 This is because later rulesets that depend on the linting framework will
-attempt to ensure that linters are configured by registering no-op 
-implmentations of lint configs. You can do this by: 
+attempt to ensure that linters are configured by registering no-op
+implmentations of lint configs. You can do this by:
 
 ```py
 # WORKSPACE
@@ -20,6 +20,16 @@ load("@apple_rules_lint//lint:setup.bzl", "lint_setup")
 lint_setup({
     "java-checkstyle": "//your:checkstyle-config",
 })
+```
+
+Alternatively, using Bzlmod:
+
+```py
+# MODULE.bazel
+bazel_dep(name = "apple_rules_lint", version = "0.1.1")
+
+linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
+linter.configure(name = "java-checkstyle", config = "//your:checkstyle-config")
 ```
 
 You may override specific lint configurations on a per-package basis by:
@@ -40,6 +50,8 @@ Can be found in [the api docs](api.md)
 
 ## Ruleset Authors
 
+### WORKSPACE setup
+
 To add linter support to your repo, add this to...
 
 ```py
@@ -57,6 +69,21 @@ load("@apple_rules_lint//lint:setup.bzl", "ruleset_lint_setup")
 
 ruleset_lint_setup()
 ```
+
+### Bzlmod setup
+
+Add:
+
+```py
+# MODULE.bazel
+
+bazel_dep(name = "apple_rules_lint", version = "0.1.1")
+
+linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
+linter.register(name = "java-checkstyle")
+```
+
+### Getting the configured config for a linter
 
 To obtain the currently configured config for a ruleset, use:
 
