@@ -1,11 +1,23 @@
 module()
 
 bazel_dep(name = "apple_rules_lint", version = "")
-local_path_override(module_name = "apple_rules_lint", path = "../..")
+
+local_path_override(
+    module_name = "apple_rules_lint",
+    path = "../..",
+)
 
 bazel_dep(name = "other_module", version = "")
-local_path_override(module_name = "other_module", path = "other_module")
+
+local_path_override(
+    module_name = "other_module",
+    path = "other_module",
+)
 
 linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
-linter.configure(name = "foo-check", config = "//:foo_config.json")
+
+linter.configure(
+    name = "foo-check",
+    config = "//:foo_config.json",
+)
 # No config for bar-lint
