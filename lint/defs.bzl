@@ -4,7 +4,9 @@ load(
     "OVERRIDE_RULE_NAME",
     _package_lint_config = "package_lint_config",
 )
+load("//lint/private:providers.bzl", _LinterInfo = "LinterInfo")
 
+LinterInfo = _LinterInfo
 package_lint_config = _package_lint_config
 
 def get_lint_config(linter_name, tags):
