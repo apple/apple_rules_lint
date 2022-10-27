@@ -6,6 +6,7 @@ stardoc(
     out = "api.md",
     input = "defs.bzl",
     symbol_names = [
+        "LinterInfo",
         "get_lint_config",
         "package_lint_config",
     ],
