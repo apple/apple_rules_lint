@@ -111,25 +111,28 @@ followed for any linter:
    test. In Selenium, this is the
    [spotbugs_test](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/spotbugs.bzl)
 
-2. Create a config rule or a marker rule of some sort. For example,
+2. It is recommended, but not required, that your test return a `LinterInfo`
+   so that other tooling can detect whether this is a lint test.
+
+3. Create a config rule or a marker rule of some sort. For example,
    [spotbugs_config](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/spotbugs_config.bzl)
 
-3. Pick a "well known" name: `lang-tool` seems to work well (such as
+4. Pick a "well known" name: `lang-tool` seems to work well (such as
    `java-spotbugs`, but you might have `go-gofmt` or `py-black`)
 
-4. Create a macro that uses
+5. Create a macro that uses
    [get_lint_config](./api.md#get_lint_config) to look up the config
    for you. If that's present, create a new instance of your test
    rule. You can see this in action
    [here](https://github.com/SeleniumHQ/selenium/blob/selenium-4.0.0-beta-1/java/private/library.bzl).
 
-5. As you write code, make sure your macro is called. If you're a
+6. As you write code, make sure your macro is called. If you're a
    ruleset author, this can be as lightweight as exporting the macro created
    above as the default way to call your rules.
 
-6. ...
+7. ...
 
-7. Profit!
+8. Profit!
 
 Users can then use the "well known" name to point to an instance of
 the config rule in their `WORKSPACE` files:
