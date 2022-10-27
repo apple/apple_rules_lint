@@ -1,6 +1,7 @@
 load("@apple_rules_lint//lint:defs.bzl", "get_lint_config")
 
 fail("Expected no config for bar-lint") if get_lint_config("bar-lint", []) != None else []
+
 fail("Expected config for foo-check") if get_lint_config("foo-check", []) == None else []
 
 filegroup(
