@@ -1,6 +1,27 @@
 <!-- Generated with Stardoc: http://skydoc.bazel.build -->
 
-<a id="#get_lint_config"></a>
+
+
+<a id="LinterInfo"></a>
+
+## LinterInfo
+
+<pre>
+LinterInfo(<a href="#LinterInfo-language">language</a>, <a href="#LinterInfo-name">name</a>)
+</pre>
+
+
+
+**FIELDS**
+
+
+| Name  | Description |
+| :------------- | :------------- |
+| <a id="LinterInfo-language"></a>language |  The language or kind of thing we are linting.    |
+| <a id="LinterInfo-name"></a>name |  The name of the linter    |
+
+
+<a id="get_lint_config"></a>
 
 ## get_lint_config
 
@@ -25,7 +46,7 @@ for specific rules.
 | <a id="get_lint_config-tags"></a>tags |  The tags from the rule (eg. <code>ctx.attr.tags</code>)   |  none |
 
 
-<a id="#package_lint_config"></a>
+<a id="package_lint_config"></a>
 
 ## package_lint_config
 

@@ -4,6 +4,7 @@ bzl_library(
     name = "implementation",
     srcs = [
         "package_lint_config.bzl",
+        "providers.bzl",
     ],
     visibility = [
         "//lint:__pkg__",
