@@ -44,6 +44,20 @@ package_lint_config({
 })
 ```
 
+### Missing `@@apple_linters` error
+
+Bazel may report an error like this:
+```
+ERROR: Failed to load Starlark extension '@@apple_linters//:defs.bzl'.
+Cycle in the workspace file detected. This indicates that a repository is used prior to being defined.
+The following chain of repository dependencies lead to the missing definition.
+ - @@apple_linters
+This could either mean you have to add the '@@apple_linters' repository with a statement like `http_archive` in your WORKSPACE file (note that transitive dependencies are not added automatically), or move an existing definition earlier in your WORKSPACE file.
+```
+
+The `@apple_linters` repository is defined when `lint_setup` is called. You'll need to figure out where `load("@apple_linters//:defs.bzl, ...)` is getting called, and modify your build to ensure that `lint_setup` is called _before_ linting is loaded.
+
+
 ### API Documentation
 
 Can be found in [the api docs](api.md)
