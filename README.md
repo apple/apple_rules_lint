@@ -6,7 +6,7 @@ A linting framework for Bazel
 You must load and configure the linting framework before anything else.
 This is because later rulesets that depend on the linting framework will
 attempt to ensure that linters are configured by registering no-op
-implmentations of lint configs. You can do this by:
+implementations of lint configs. You can do this by:
 
 ```py
 # WORKSPACE
