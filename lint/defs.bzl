@@ -33,7 +33,7 @@ def get_lint_config(linter_name, tags):
         return None
 
     if native.existing_rule("%s_%s" % (OVERRIDE_RULE_NAME, linter_name)) != None:
-        return Label("@//%s:%s_%s" % (native.package_name(), OVERRIDE_RULE_NAME, linter_name))
+        return Label("@%s//%s:%s_%s" % (native.repo_name(), native.package_name(), OVERRIDE_RULE_NAME, linter_name))
 
     if linter_name in configured_linters:
         return Label("@apple_linters//:%s_%s" % (OVERRIDE_RULE_NAME, linter_name))
