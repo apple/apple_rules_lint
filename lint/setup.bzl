@@ -1,3 +1,4 @@
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("//lint/private:register_linters.bzl", "COMMON_NAME", "register_linters")
 
 def do_register_linters(name_to_linter_config):
@@ -19,6 +20,8 @@ def lint_setup(name_to_linter_config = {}):
     Args:
          linters: a dict of "well known name" to Label.
     """
+
+    bazel_skylib_workspace()
 
     if native.existing_rule(COMMON_NAME):
         fail(
