@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+TAG="$1"
+git archive --format=tar --prefix=apple_rules_lint-"${TAG}"/ "${TAG}" | gzip > apple_rules_lint-"${TAG}".tar.gz
