@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+bazel build lint/private/docs
+cp -f bazel-bin/lint/private/docs/api.md api.md

@@ -7,7 +7,5 @@ bzl_library(
         "package_lint_config.bzl",
         "providers.bzl",
     ],
-    visibility = [
-        "//lint:__pkg__",
-    ],
+    visibility = ["//visibility:public"],
 )
