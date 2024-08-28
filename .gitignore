@@ -1,0 +1,5 @@
+.ijwb/
+*~
+*.swp
+**/bazel-*
+**/MODULE.bazel.lock
