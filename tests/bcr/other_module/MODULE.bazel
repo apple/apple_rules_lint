@@ -6,9 +6,7 @@ module(
 bazel_dep(name = "apple_rules_lint", version = "0.4.0")
 
 linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
-
 linter.register(name = "foo-check")
-
 linter.register(name = "bar-lint")
 
 # This config is ignored if other_module is not the root module.
