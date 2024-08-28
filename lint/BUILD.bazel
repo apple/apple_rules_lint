@@ -1,20 +1,8 @@
-load("@io_bazel_stardoc//stardoc:stardoc.bzl", "stardoc")
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 
-stardoc(
-    name = "docs",
-    out = "api.md",
-    input = "defs.bzl",
-    symbol_names = [
-        "LinterInfo",
-        "get_lint_config",
-        "package_lint_config",
-    ],
-    deps = [
-        ":implementation",
-        "//lint/private:implementation",
-    ],
-)
+exports_files([
+    "defs.bzl",
+])
 
 bzl_library(
     name = "implementation",
