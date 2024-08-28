@@ -26,10 +26,11 @@ Alternatively, using Bzlmod:
 
 ```py
 # MODULE.bazel
-bazel_dep(name = "apple_rules_lint", version = "0.1.1")
+bazel_dep(name = "apple_rules_lint", version = "0.4.0")
 
 linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
 linter.configure(name = "java-checkstyle", config = "//your:checkstyle-config")
+use_repo(linter, "apple_linters")
 ```
 
 You may override specific lint configurations on a per-package basis by:

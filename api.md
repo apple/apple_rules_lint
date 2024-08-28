@@ -7,13 +7,12 @@
 ## LinterInfo
 
 <pre>
+load("@apple_rules_lint//lint:defs.bzl", "LinterInfo")
+
 LinterInfo(<a href="#LinterInfo-language">language</a>, <a href="#LinterInfo-name">name</a>)
 </pre>
 
-
-
 **FIELDS**
-
 
 | Name  | Description |
 | :------------- | :------------- |
@@ -26,6 +25,8 @@ LinterInfo(<a href="#LinterInfo-language">language</a>, <a href="#LinterInfo-nam
 ## get_lint_config
 
 <pre>
+load("@apple_rules_lint//lint:defs.bzl", "get_lint_config")
+
 get_lint_config(<a href="#get_lint_config-linter_name">linter_name</a>, <a href="#get_lint_config-tags">tags</a>)
 </pre>
 
@@ -42,8 +43,8 @@ for specific rules.
 
 | Name  | Description | Default Value |
 | :------------- | :------------- | :------------- |
-| <a id="get_lint_config-linter_name"></a>linter_name |  The "well known" name of the linter (eg. <code>java-checkstyle</code>)   |  none |
-| <a id="get_lint_config-tags"></a>tags |  The tags from the rule (eg. <code>ctx.attr.tags</code>)   |  none |
+| <a id="get_lint_config-linter_name"></a>linter_name |  The "well known" name of the linter (eg. `java-checkstyle`)   |  none |
+| <a id="get_lint_config-tags"></a>tags |  The tags from the rule (eg. `ctx.attr.tags`)   |  none |
 
 
 <a id="package_lint_config"></a>
@@ -51,6 +52,8 @@ for specific rules.
 ## package_lint_config
 
 <pre>
+load("@apple_rules_lint//lint:defs.bzl", "package_lint_config")
+
 package_lint_config(<a href="#package_lint_config-linters">linters</a>)
 </pre>
 

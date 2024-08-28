@@ -1,0 +1,18 @@
+module(
+    name = "lint_example",
+)
+
+bazel_dep(name = "apple_rules_lint", version = "0.0.0")
+local_path_override(
+    module_name = "apple_rules_lint",
+    path = "..",
+)
+
+linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
+linter.register(name = "lint_example")
+
+#linter.configure(
+#    name = "lint_example",
+#    config = "//:default_config",
+#)
+use_repo(linter, "apple_linters")
