@@ -1,3 +1,4 @@
+load("@bazel_features//:features.bzl", "bazel_features")
 load("//lint/private:register_linters.bzl", "COMMON_NAME", "register_linters")
 
 def _linter_impl(module_ctx):
@@ -37,6 +38,18 @@ def _linter_impl(module_ctx):
         name = COMMON_NAME,
         linters = name_to_linter_config,
     )
+
+    if bazel_features.external_deps.extension_metadata_has_reproducible:
+        # The type and attributes of repositories created by this extension are fully deterministic
+        # and thus don't need to be included in MODULE.bazel.lock. In addition, we can participate
+        # in `bazel mod tidy` by returning the `COMMON_NAME` here too.
+        return module_ctx.extension_metadata(
+            reproducible = True,
+            root_module_direct_deps = [COMMON_NAME],
+            root_module_direct_dev_deps = [],
+        )
+    else:
+        return None
 
 _register = tag_class(
     attrs = {
